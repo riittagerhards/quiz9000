@@ -5,3 +5,11 @@
   background-color: red;
   color: white;
 }
+.yes {
+  background-color: rgb(148, 255, 148);
+  border-radius: 15%;
+}
+.no {
+  background-color: rgba(253, 84, 84, 0.795);
+  border-radius: 15%;
+}

@@ -48,7 +48,7 @@ function showAnswerIsCorrect() {
 
 function showAnswerIsWrong() {
   const newP = document.createElement("p");
-  newP.textContent = "Yay, this is correct!";
+  newP.textContent = "Oh no, you're wrong.";
   newP.className = "wrong";
   document.body.append(newP);
 }
