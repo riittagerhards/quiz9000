@@ -1,10 +1,10 @@
-const correctAnswer = true;
+const correctAnswer = false;
 
 const myQuestion = document.querySelector(".question");
 myQuestion.textContent = "Did it work?";
 /*
-const alertYes = document.querySelector(".yes");
-alertYes.onclick = function () {
+const yesButton = document.querySelector(".yes");
+yesButton.onclick = function () {
   if (correctAnswer === true) {
     alert("Oh yes!");
   } else {
@@ -12,8 +12,8 @@ alertYes.onclick = function () {
   }
 };
 
-const alertNo = document.querySelector(".no");
-alertNo.onclick = function () {
+const noButton = document.querySelector(".no");
+noButton.onclick = function () {
   if (correctAnswer === false) {
     alert("Oh yes!");
   } else {
@@ -21,11 +21,37 @@ alertNo.onclick = function () {
   }
 };
 */
-document.body.onload = myAnswer;
-function myAnswer() {
+const yesButton = document.querySelector(".yes");
+yesButton.onclick = function () {
+  if (correctAnswer === true) {
+    showAnswerIsCorrect();
+  } else {
+    showAnswerIsWrong();
+  }
+};
+const noButton = document.querySelector(".no");
+noButton.onclick = function () {
+  if (correctAnswer === false) {
+    showAnswerIsCorrect();
+  } else {
+    showAnswerIsWrong();
+  }
+};
+
+function showAnswerIsCorrect() {
   const newP = document.createElement("p");
   const newAnswer = document.createTextNode("Oh yes, this is correct!");
   newP.appendChild(newAnswer);
+  newP.className = "correct";
+  const currentP = document.getElementById("emptyP");
+  document.body.insertBefore(newP, emptyP);
+}
+
+function showAnswerIsWrong() {
+  const newP = document.createElement("p");
+  const newAnswer = document.createTextNode("Oh no, this is so not correct!");
+  newP.appendChild(newAnswer);
+  newP.className = "wrong";
   const currentP = document.getElementById("emptyP");
   document.body.insertBefore(newP, emptyP);
 }
