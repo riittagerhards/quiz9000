@@ -1,7 +1,7 @@
 const correctAnswer = true;
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = "Did it work?";
+myQuestion.textContent = "Are you a robot?";
 /*
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
@@ -44,7 +44,7 @@ function showAnswerIsCorrect() {
   newP.textContent = "Yay, this is correct!";
   newP.className = "correct";
   document.body.append(newP);
-  disableButtons();
+  setTimeout(setNewQuestion, 2000);
 }
 
 function showAnswerIsWrong() {
@@ -58,4 +58,10 @@ function showAnswerIsWrong() {
 function disableButtons() {
   yesButton.disabled = true;
   noButton.disabled = true;
+}
+
+function setNewQuestion() {
+  myQuestion.textContent = "Are you a cat?";
+  document.body.removeChild(document.querySelector(".correct"));
+  const correctAnswer = false;
 }
