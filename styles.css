@@ -6,7 +6,16 @@
   padding-bottom: 2rem;
   border: solid blueviolet 0.1rem;
 }
-
+.yes {
+  background-color: rgb(252, 253, 253);
+  border: solid blueviolet 0.1rem;
+  margin: 0.25rem;
+}
+.no {
+  background-color: rgb(252, 253, 253);
+  border: solid blueviolet 0.1rem;
+  margin: 0.25rem;
+}
 .correct {
   background-color: chartreuse;
   font-family: "Source Sans Pro", sans-serif;
@@ -19,12 +28,4 @@
   font-family: "Source Sans Pro", sans-serif;
   text-align: center;
   padding: 1rem;
-}
-.yes {
-  background-color: rgb(252, 253, 253);
-  border-radius: 35%;
-}
-.no {
-  background-color: rgb(252, 253, 253);
-  border-radius: 35%;
 }
