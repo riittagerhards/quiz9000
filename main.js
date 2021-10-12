@@ -1,26 +1,19 @@
-const correctAnswer = true;
+const questionList = [
+  "Are you a cat?",
+  "Are you a fish?",
+  "Are you a dog?",
+  "Are you a camel?",
+];
+
+const answerList = [true, false, false, true];
+
+let questionIndex = 0;
+
+let correctAnswer = answerList[questionIndex];
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = "Are you a robot?";
-/*
-const yesButton = document.querySelector(".yes");
-yesButton.onclick = function () {
-  if (correctAnswer === true) {
-    alert("Oh yes!");
-  } else {
-    alert("This is incorrect!!!");
-  }
-};
+myQuestion.textContent = questionList[0];
 
-const noButton = document.querySelector(".no");
-noButton.onclick = function () {
-  if (correctAnswer === false) {
-    alert("Oh yes!");
-  } else {
-    alert("This is incorrect!!!");
-  }
-};
-*/
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
   if (correctAnswer === true) {
@@ -44,7 +37,7 @@ function showAnswerIsCorrect() {
   newP.textContent = "Yay, this is correct!";
   newP.className = "correct";
   document.body.append(newP);
-  setTimeout(setNewQuestion, 2000);
+  setTimeout(setNewQuestion, 1500);
 }
 
 function showAnswerIsWrong() {
@@ -61,7 +54,20 @@ function disableButtons() {
 }
 
 function setNewQuestion() {
-  myQuestion.textContent = "Are you a cat?";
+  questionIndex += 1;
+  myQuestion.textContent = questionList[questionIndex];
+  correctAnswer = answerList[questionIndex];
   document.body.removeChild(document.querySelector(".correct"));
-  const correctAnswer = false;
+  quizEnd();
+}
+function quizEnd() {
+  if (questionIndex === 4) {
+    document
+      .querySelector(".quiz")
+      .removeChild(document.querySelector(".answer"));
+    const endElement = document.querySelector("h1");
+    endElement.textContent = "Congratulation! You won!";
+    endElement.className = "end";
+    document.body.appendChild(endElement);
+  }
 }
