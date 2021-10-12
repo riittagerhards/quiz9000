@@ -44,6 +44,7 @@ function showAnswerIsCorrect() {
   newP.textContent = "Yay, this is correct!";
   newP.className = "correct";
   document.body.append(newP);
+  disableButtons();
 }
 
 function showAnswerIsWrong() {
@@ -51,4 +52,10 @@ function showAnswerIsWrong() {
   newP.textContent = "Oh no, you're wrong.";
   newP.className = "wrong";
   document.body.append(newP);
+  disableButtons();
+}
+
+function disableButtons() {
+  yesButton.disabled = true;
+  noButton.disabled = true;
 }
