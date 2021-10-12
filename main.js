@@ -1,4 +1,4 @@
-const correctAnswer = false;
+const correctAnswer = true;
 
 const myQuestion = document.querySelector(".question");
 myQuestion.textContent = "Did it work?";
@@ -29,6 +29,7 @@ yesButton.onclick = function () {
     showAnswerIsWrong();
   }
 };
+
 const noButton = document.querySelector(".no");
 noButton.onclick = function () {
   if (correctAnswer === false) {
@@ -40,18 +41,14 @@ noButton.onclick = function () {
 
 function showAnswerIsCorrect() {
   const newP = document.createElement("p");
-  const newAnswer = document.createTextNode("Oh yes, this is correct!");
-  newP.appendChild(newAnswer);
+  newP.textContent = "Yay, this is correct!";
   newP.className = "correct";
-  const currentP = document.getElementById("emptyP");
-  document.body.insertBefore(newP, emptyP);
+  document.body.append(newP);
 }
 
 function showAnswerIsWrong() {
   const newP = document.createElement("p");
-  const newAnswer = document.createTextNode("Oh no, this is so not correct!");
-  newP.appendChild(newAnswer);
+  newP.textContent = "Yay, this is correct!";
   newP.className = "wrong";
-  const currentP = document.getElementById("emptyP");
-  document.body.insertBefore(newP, emptyP);
+  document.body.append(newP);
 }
