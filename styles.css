@@ -28,9 +28,3 @@
   background-color: rgb(252, 253, 253);
   border-radius: 35%;
 }
-.end {
-  background: linear-gradient(rgb(253, 107, 234), yellow, cyan);
-  font-family: "Source Sans Pro", sans-serif;
-  padding: 2rem;
-  border: solid blueviolet 0.1rem;
-}

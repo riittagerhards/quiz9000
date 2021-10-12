@@ -67,7 +67,5 @@ function quizEnd() {
       .removeChild(document.querySelector(".answer"));
     const endElement = document.querySelector("h1");
     endElement.textContent = "Congratulation! You won!";
-    endElement.className = "end";
-    document.body.appendChild(endElement);
   }
 }
