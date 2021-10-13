@@ -19,7 +19,7 @@
   text-align: center;
   padding: 1rem;
 }
-.wrong {
+.incorrect {
   background-color: rgb(253, 74, 113);
   border: solid white 0.1rem;
   color: white;
