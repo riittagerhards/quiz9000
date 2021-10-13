@@ -11,6 +11,10 @@ let questionIndex = 0;
 
 let correctAnswer = answerList[questionIndex];
 
+updateProgress();
+
+const sectionQuiz = document.querySelector(".quiz");
+
 const myQuestion = document.querySelector(".question");
 myQuestion.textContent = questionList[0];
 
@@ -36,7 +40,7 @@ function showAnswerIsCorrect() {
   const newP = document.createElement("p");
   newP.textContent = "Yay, this is correct!";
   newP.className = "correct";
-  document.body.append(newP);
+  sectionQuiz.append(newP);
   setTimeout(setNewQuestion, 1500);
 }
 
@@ -44,7 +48,7 @@ function showAnswerIsWrong() {
   const newP = document.createElement("p");
   newP.textContent = "Oh no, you're wrong.";
   newP.className = "wrong";
-  document.body.append(newP);
+  sectionQuiz.append(newP);
   disableButtons();
 }
 
@@ -57,17 +61,25 @@ function setNewQuestion() {
   questionIndex += 1;
   myQuestion.textContent = questionList[questionIndex];
   correctAnswer = answerList[questionIndex];
-  document.body.removeChild(document.querySelector(".correct"));
+  sectionQuiz.removeChild(document.querySelector(".correct"));
+  updateProgress();
   quizEnd();
 }
 function quizEnd() {
-  if (questionIndex === 4) {
+  if (questionIndex === questionList.length) {
     document
       .querySelector(".quiz")
       .removeChild(document.querySelector(".answer"));
+    document
+      .querySelector(".update")
+      .removeChild(document.querySelector(".progress"));
     const endElement = document.querySelector("h1");
     endElement.textContent = "Congratulation! You won!";
-    endElement.className = "end";
-    document.body.appendChild(endElement);
   }
+}
+function updateProgress() {
+  const progressElement = document.querySelector(".progress");
+  progressElement.textContent = `Question ${questionIndex + 1}/${
+    questionList.length
+  }`;
 }
