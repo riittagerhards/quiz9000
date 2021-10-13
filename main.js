@@ -1,22 +1,32 @@
-const questionList = [
-  "Are you a cat?",
-  "Are you a fish?",
-  "Are you a dog?",
-  "Are you a camel?",
+const questions = [
+  {
+    question: "Are you a cat?",
+    answer: true,
+  },
+  {
+    question: "Are you a fish?",
+    answer: false,
+  },
+  {
+    question: "Are you a dog?",
+    answer: false,
+  },
+  {
+    question: "Are you a camel?",
+    answer: true,
+  },
 ];
-
-const answerList = [true, false, false, true];
 
 let questionIndex = 0;
 
-let correctAnswer = answerList[questionIndex];
+let correctAnswer = questions[questionIndex].answer;
 
 updateProgress();
 
 const sectionQuiz = document.querySelector(".quiz");
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = questionList[0];
+myQuestion.textContent = questions[questionIndex].question;
 
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
@@ -36,19 +46,28 @@ noButton.onclick = function () {
   }
 };
 
+function createMyElement(tagName, properties) {
+  const element = document.createElement(tagName);
+  element.className = properties.className;
+  element.textContent = properties.textContent;
+  return element;
+}
+
 function showAnswerIsCorrect() {
-  const newP = document.createElement("p");
-  newP.textContent = "Yay, this is correct!";
-  newP.className = "correct";
-  sectionQuiz.append(newP);
+  const p = createMyElement("p", {
+    className: "correct",
+    textContent: "Yay, this is correct!",
+  });
+  sectionQuiz.append(p);
   setTimeout(setNewQuestion, 1500);
 }
 
 function showAnswerIsWrong() {
-  const newP = document.createElement("p");
-  newP.textContent = "Oh no, you're wrong.";
-  newP.className = "wrong";
-  sectionQuiz.append(newP);
+  const p = createMyElement("p", {
+    className: "incorrect",
+    textContent: "Oh no, you're wrong.",
+  });
+  sectionQuiz.append(p);
   disableButtons();
 }
 
@@ -59,27 +78,29 @@ function disableButtons() {
 
 function setNewQuestion() {
   questionIndex += 1;
-  myQuestion.textContent = questionList[questionIndex];
-  correctAnswer = answerList[questionIndex];
   sectionQuiz.removeChild(document.querySelector(".correct"));
-  updateProgress();
-  quizEnd();
+  if (questionIndex !== questions.length) {
+    myQuestion.textContent = questions[questionIndex].question;
+    correctAnswer = questions[questionIndex].answer;
+    updateProgress();
+  } else {
+    quizEnd();
+  }
 }
 function quizEnd() {
-  if (questionIndex === questionList.length) {
-    document
-      .querySelector(".quiz")
-      .removeChild(document.querySelector(".answer"));
-    document
-      .querySelector(".update")
-      .removeChild(document.querySelector(".progress"));
-    const endElement = document.querySelector("h1");
-    endElement.textContent = "Congratulation! You won!";
-  }
+  document
+    .querySelector(".quiz")
+    .removeChild(document.querySelector(".answer"));
+  document
+    .querySelector(".update")
+    .removeChild(document.querySelector(".progress"));
+  myQuestion.textContent = "";
+  const endElement = document.querySelector("h1");
+  endElement.textContent = "Congratulation! You won!";
 }
 function updateProgress() {
   const progressElement = document.querySelector(".progress");
   progressElement.textContent = `Question ${questionIndex + 1}/${
-    questionList.length
+    questions.length
   }`;
 }
