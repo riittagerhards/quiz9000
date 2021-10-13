@@ -6,11 +6,7 @@
   padding-bottom: 2rem;
   border: solid blueviolet 0.1rem;
 }
-.yes {
-  background-color: rgb(252, 253, 253);
-  border: solid blueviolet 0.1rem;
-  margin: 0.25rem;
-}
+.yes,
 .no {
   background-color: rgb(252, 253, 253);
   border: solid blueviolet 0.1rem;
@@ -18,12 +14,14 @@
 }
 .correct {
   background-color: chartreuse;
+  border: solid white 0.1rem;
   font-family: "Source Sans Pro", sans-serif;
   text-align: center;
   padding: 1rem;
 }
 .wrong {
-  background-color: red;
+  background-color: rgb(253, 74, 113);
+  border: solid white 0.1rem;
   color: white;
   font-family: "Source Sans Pro", sans-serif;
   text-align: center;
