@@ -58,6 +58,7 @@ function setNewQuestion() {
   myQuestion.textContent = questionList[questionIndex];
   correctAnswer = answerList[questionIndex];
   document.body.removeChild(document.querySelector(".correct"));
+  updateProgress();
   quizEnd();
 }
 function quizEnd() {
@@ -65,7 +66,16 @@ function quizEnd() {
     document
       .querySelector(".quiz")
       .removeChild(document.querySelector(".answer"));
+    document
+      .querySelector(".update")
+      .removeChild(document.querySelector(".progress"));
     const endElement = document.querySelector("h1");
     endElement.textContent = "Congratulation! You won!";
   }
+}
+function updateProgress() {
+  const progressElement = document.querySelector(".progress");
+  progressElement.textContent = `Question ${questionIndex + 1}/${
+    questionList.length
+  }`;
 }
